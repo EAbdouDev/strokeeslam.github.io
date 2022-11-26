@@ -1,0 +1,761 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Stroke</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="0d0db84e-7219-4482-806b-0b6bcb27f8e3" class="page serif"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/skull_gray.svg"/></div><h1 class="page-title">Stroke</h1></header><div class="page-body"><blockquote id="fc2fe6b7-31c9-480b-a214-fb618b6b9ca6" class=""><mark class="highlight-gray"><em>Eslam Abdou </em></mark></blockquote><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e9d96037-adf3-4123-abc8-062f55e8f09b"><div style="font-size:1.5em"><img class="icon" src="https://www.notion.so/icons/bookmark_red.svg"/></div><div style="width:100%">A stroke, sometimes called a brain attack, <strong>occurs when something blocks the blood supply to part of the brain or when a blood vessel in the brain bursts</strong>.</div></figure><hr id="0fc977d7-48f8-406a-b13e-c68f8acb2e4e"/><div id="3cb5eac5-9404-47b1-9b91-f32a8c1e69e8" class="column-list"><div id="dcb9ba23-c655-4792-bc4f-70ed637d64ea" style="width:50%" class="column"><h1 id="47f0faf2-5701-44d7-b850-486030873ca3" class=""><strong>Brain Arteries: </strong></h1><ul id="83224b09-4471-4d37-9704-026c04d96e3d" class="bulleted-list"><li style="list-style-type:disc">The <strong>anterior circuit</strong> is supplied by the <mark class="highlight-yellow_background">internal carotid arteries.</mark></li></ul><ul id="44c06906-434a-4d27-ab63-2868362810fa" class="bulleted-list"><li style="list-style-type:disc">The <strong>posterior circuit</strong> is supplied by the <mark class="highlight-yellow_background">vertebrobasilar system.</mark></li></ul><p id="2d01dc52-3e83-41fe-8ee3-80596f3ada41" class="">The internal carotid arteries supply the brain with about 80% of its blood, while the vertebral arteries contribute the remaining 20%.</p><hr id="61683bb7-797c-4afd-a89a-7844d2a0acd2"/><h3 id="40471b4d-9d93-447e-82df-adb9e55573db" class=""><mark class="highlight-blue"><span style="border-bottom:0.05em solid"><strong>Anterior circulation:</strong></span></mark></h3><p id="8c977eed-15cb-4e33-b6e1-2c35f965db14" class=""><strong>The arteries of this anterior circuit are:</strong></p><ul id="aae5b7f3-3cec-4f9c-b57e-3162657ca94b" class="bulleted-list"><li style="list-style-type:disc">The internal carotid arteries</li></ul><ul id="d7472229-5b7a-4f46-9ed7-1ab65a2fd254" class="bulleted-list"><li style="list-style-type:disc">The anterior cerebral arteries</li></ul><ul id="906f46bf-e323-4127-bc27-35544b6174e1" class="bulleted-list"><li style="list-style-type:disc">The anterior communicating artery</li></ul><ul id="c9b5ede1-8233-4199-ad0a-7e403d9928ef" class="bulleted-list"><li style="list-style-type:disc">The middle cerebral arteries</li></ul><hr id="f39e5a90-bc12-4ca6-9313-d0328bc56866"/><h3 id="9e573f31-8a7b-4e08-a247-8e59f83c3994" class=""><span style="border-bottom:0.05em solid"><mark class="highlight-blue"><strong>Posterior circulation:</strong></mark></span></h3><p id="7909a436-3c92-40e0-9360-f8b01e395c0b" class="">The vessels of the posterior circuit include:</p><ul id="bd54263c-2a15-4bb5-9c23-80dbda865800" class="bulleted-list"><li style="list-style-type:disc">The vertebral arteries</li></ul><ul id="229d3c86-383e-4272-ab69-c47aced15bf7" class="bulleted-list"><li style="list-style-type:disc">The basilar artery and its branches</li></ul><ul id="1324153f-63e9-481c-9e74-639d5b34efd8" class="bulleted-list"><li style="list-style-type:disc">The posterior cerebral arteries</li></ul><ul id="3e1fa37f-df51-4424-b43b-8fa8f0926716" class="bulleted-list"><li style="list-style-type:disc"> The posterior communicating arteries.</li></ul><p id="49c733dd-006f-4441-bce5-614a9539fd1a" class="">
+</p><ul id="4dd3ff34-2db3-4718-83e4-03da7ebf73ae" class="bulleted-list"><li style="list-style-type:disc">The anterior cerebral artery supplies the medial portions of the frontal and parietal lobes and corpus callosum.</li></ul><ul id="3137ab69-a142-489f-b77b-b8693360a8f9" class="bulleted-list"><li style="list-style-type:disc">The middle cerebral artery supplies large portions of the frontal, parietal, and temporal lobe surfaces.</li></ul><ul id="9c21b73b-53b2-4ca2-b3ed-0ed9680e0ecb" class="bulleted-list"><li style="list-style-type:disc">Branches of the anterior and middle cerebral arteries (lenticulostriate arteries) supply the basal ganglia and anterior limb of the internal capsule.</li></ul><ul id="69c1d8d8-c395-4a30-bc25-57fcac2a80b8" class="bulleted-list"><li style="list-style-type:disc">The vertebral and basilar arteries supply the brain stem, cerebellum, posterior cerebral cortex, and medial temporal lobe.</li></ul><ul id="2ed60346-d7be-4c0b-84c4-0a1d545b7bd5" class="bulleted-list"><li style="list-style-type:disc">The posterior cerebral arteries bifurcate from the basilar artery to supply the medial temporal (including the hippocampus) and occipital lobes, thalamus, and mammillary and geniculate bodies.</li></ul><ul id="b79f822a-97af-4c03-8325-e8a455dcc4e9" class="bulleted-list"><li style="list-style-type:disc">Anterior circulation and posterior circulation communicate in the circle of Willis.</li></ul></div><div id="9d04ae99-d442-474e-868d-9c1132a52e3b" style="width:50%" class="column"><figure id="cbc29cfe-7912-429b-b7e9-0ea69df60706" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Stroke-Circle-of-Willis-1024x690.jpg"><img style="width:1024px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Stroke-Circle-of-Willis-1024x690.jpg"/></a></figure><figure id="40fcea1f-4caf-45ad-a6f1-bdcd77817888" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/111275-circle-of-willis-1296x728-body_(1).png"><img style="width:1155px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/111275-circle-of-willis-1296x728-body_(1).png"/></a></figure><blockquote id="a3070175-5df9-43fb-8410-619b03558381" class="">Try to understand the anatomy from this video: <a href="http://bit.ly/eslamBrain"><strong>bit.ly/eslamBrain</strong></a></blockquote><p id="a0927f44-4add-4f37-acbf-b7db20fae3a9" class="">  </p><p id="381a9db4-091c-4aa2-baac-ac80f29383e6" class="">
+</p></div></div><h3 id="a8e05e67-d7ab-4ac0-8482-de29e38c3087" class="block-color-gray_background">More Information: </h3><ul id="048ea5f5-f55d-4e98-9b1c-341439c226b8" class="bulleted-list"><li style="list-style-type:disc">After ascending to the brain, the internal carotid arteries split into the anterior and middle cerebral arteries.</li></ul><ul id="4d244758-09e2-4482-9aba-a96994c7cc6f" class="bulleted-list"><li style="list-style-type:disc">The anterior cerebral arteries supply the medial frontal and parietal lobes, and they are connected by the anterior communicating artery.</li></ul><ul id="45de1b7d-73d4-4865-8254-e3caafe9bd08" class="bulleted-list"><li style="list-style-type:disc">The middle cerebral arteries supply most of the lateral surface of the cerebral hemispheres.</li></ul><ul id="b063c096-8c45-484a-b055-f8fcc4412f44" class="bulleted-list"><li style="list-style-type:disc">Before splitting into the middle and anterior cerebral arteries, the internal carotids give rise to the anterior choroidal arteries, which supply a number of different structures, and the posterior communicating arteries, which connect the internal carotid arteries to the posterior cerebral arteries.</li></ul><ul id="91631ed6-478b-4b8a-ac2b-05c91dc28f0d" class="bulleted-list"><li style="list-style-type:disc">The vertebral arteries give rise to the posterior inferior cerebellar arteries, which supply the inferior surface of the cerebellum and in most brains will also give rise to the posterior spinal arteries, which supply the posterior spinal cord.</li></ul><ul id="f8c64bb1-95a6-4d66-acbd-7af9dd0ad63e" class="bulleted-list"><li style="list-style-type:disc">The anterior spinal artery, which supplies the anterior spinal cord, also branches off the vertebral arteries, then the two vertebral arteries come together to form the basilar artery.</li></ul><ul id="e0e95a3d-8d97-440e-bce6-78525c72ea44" class="bulleted-list"><li style="list-style-type:disc">The basilar artery gives rise to the anterior inferior and superior cerebellar arteries, which supply the rest of the cerebellar surface.</li></ul><ul id="9eb3ea90-1d95-4ba8-9991-43c4f50ebabc" class="bulleted-list"><li style="list-style-type:disc">Then, at the the level of the midbrain, the basilar artery splits into two posterior cerebral arteries.</li></ul><ul id="3e782bd7-d24f-4e11-95dc-50e8ffa7665d" class="bulleted-list"><li style="list-style-type:disc">The posterior cerebral arteries supply the medial and inferior surfaces of the occipital and temporal lobes.</li></ul><ul id="f9ce8997-e07c-4796-afb8-5f019b572864" class="bulleted-list"><li style="list-style-type:disc">The anterior cerebral, internal carotid, and posterior cerebral arteries of both sides of the brain are all connected, forming what is known as the Circle of Willis.</li></ul><ul id="bbc09d58-da94-4624-8cc5-bb3d7e57857b" class="bulleted-list"><li style="list-style-type:disc">This interconnection can allow blood flow to continue if a major vessel is blocked on one side of the brain.</li></ul><p id="053fda39-9f09-4b22-a52f-77dc04a1e29d" class="">
+</p><hr id="7534edf8-011d-4b65-aa0a-18ba77a178bd"/><div id="8cbd290c-6a2d-4360-8e9c-7c7c71a42f1e" class="column-list"><div id="0cc35183-6e07-40e3-8a6a-dd45c7f99224" style="width:50%" class="column"><h3 id="076cd306-d778-4773-8722-0d0e8df2e4a2" class=""><mark class="highlight-blue"><strong>FAST Tool for Identifying a Stroke in the Community:</strong></mark></h3><ul id="85b7afd7-fbde-46a3-9ea9-b99563bb241a" class="bulleted-list"><li style="list-style-type:disc"><strong>F</strong> – <strong>F</strong>ace</li></ul><ul id="8feeab91-c220-4d30-931c-8950e889ec52" class="bulleted-list"><li style="list-style-type:disc"><strong>A</strong> – <strong>A</strong>rm</li></ul><ul id="ea5f25ed-f4ef-4ab0-a70b-8f87ba3491a4" class="bulleted-list"><li style="list-style-type:disc"><strong>S</strong> – <strong>S</strong>peech</li></ul><ul id="ea2c00fa-665b-451a-bf53-e5aaa4131e77" class="bulleted-list"><li style="list-style-type:disc"><strong>T</strong> – <strong>T</strong>ime (act fast and call 999).</li></ul></div><div id="2a5cc281-f6da-4588-ba21-ac284a8865ec" style="width:50%" class="column"><figure id="ad560480-bcae-4721-9e59-ffb451268b63" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled.png"><img style="width:604px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled.png"/></a></figure></div></div><p id="87a2d8fd-dc3f-4b84-bfa2-409e87a4ca70" class="">
+</p><hr id="281b6da2-b255-4ef0-97fc-9f0a66464979"/><h3 id="f13cceb2-0d3d-424d-a3a3-f6e1b4319b38" class=""><mark class="highlight-blue"><strong>Strokes are either:</strong></mark></h3><ul id="ea47aa37-4683-42d9-9b19-204936e2adbd" class="bulleted-list"><li style="list-style-type:disc"><em><strong>Ischemia</strong></em><em> or </em><em><strong>infarction</strong></em><em> of brain tissue secondary to inadequate blood supply.</em></li></ul><ul id="139a7f15-5a12-4743-85b4-77cfc3591590" class="bulleted-list"><li style="list-style-type:disc"><em><strong>Intracranial hemorrhage.</strong></em></li></ul><p id="8e4ae9ee-0571-4ead-ae64-8cca3c81d228" class="">
+</p><p id="22fd1542-e922-4650-a5d4-e180d2d578a9" class=""><mark class="highlight-orange_background"><span style="border-bottom:0.05em solid"><strong>Disruption of blood supply can be caused by:</strong></span></mark></p><ul id="e64c3a90-6675-4d84-acb5-2578cd2028b1" class="bulleted-list"><li style="list-style-type:disc">Thrombus formation or embolus, for example in patients with atrial fibrillation</li></ul><ul id="9e0051ea-a949-4773-a1e9-6e24d4f61708" class="bulleted-list"><li style="list-style-type:disc">Atherosclerosis</li></ul><ul id="e6e59d3c-f7bb-4c9a-827d-e391e8e81f11" class="bulleted-list"><li style="list-style-type:disc">Shock</li></ul><ul id="d070db61-8f2f-47e4-8b7d-00bd0e0a2b6c" class="bulleted-list"><li style="list-style-type:disc">Vasculitis</li></ul><p id="e290b8b7-5754-461e-b4e3-d33f44da051f" class="">
+</p><p id="fe13feec-4cfa-4a38-9733-1a05f7ccbc41" class=""><span style="border-bottom:0.05em solid"><mark class="highlight-orange_background"><strong>Risk Factors: </strong></mark></span></p><table id="db630719-130e-4c04-8e50-0d38db0cb7e1" class="simple-table"><thead class="simple-table-header"><tr id="8252c3cb-8bb8-4f3f-a0b6-d910acd53c8e"><th id="aip~" class="simple-table-header-color simple-table-header" style="width:386px">Modifiable</th><th id="F@WL" class="simple-table-header-color simple-table-header" style="width:449px">Non-Modifiable</th></tr></thead><tbody><tr id="faf8b79b-a1ba-4567-b8c8-1b8ea61c71d6"><td id="aip~" class="" style="width:386px">Hypertension</td><td id="F@WL" class="" style="width:449px">Prior stroke</td></tr><tr id="50c8dbe4-8dea-4a40-884a-5c74c32b5486"><td id="aip~" class="" style="width:386px">Cigarette smoking</td><td id="F@WL" class="" style="width:449px">Older age</td></tr><tr id="37c95e52-5517-4e42-b8d0-851472f68403"><td id="aip~" class="" style="width:386px">Dyslipidemia</td><td id="F@WL" class="" style="width:449px">Family history of stroke</td></tr><tr id="41f96d67-6522-4eec-b890-fcb2d0828632"><td id="aip~" class="" style="width:386px">Diabetes</td><td id="F@WL" class="" style="width:449px">Genetic factors</td></tr><tr id="05724ebe-092b-4b74-9b18-ea4f132f7af9"><td id="aip~" class="" style="width:386px">Insulin resistance</td><td id="F@WL" class="" style="width:449px"></td></tr><tr id="51827105-6be3-4213-9951-a748ef65b406"><td id="aip~" class="" style="width:386px">Abdominal obesity</td><td id="F@WL" class="" style="width:449px"></td></tr><tr id="b08b409e-a064-40c9-86f2-77da283a0b5f"><td id="aip~" class="" style="width:386px">Excess alcohol consumption</td><td id="F@WL" class="" style="width:449px"></td></tr><tr id="a85d1169-5321-48a8-869d-864411ac7d69"><td id="aip~" class="" style="width:386px">Lack of physical activity</td><td id="F@WL" class="" style="width:449px"></td></tr><tr id="429675c3-155f-4fdb-acbd-2b732c686b09"><td id="aip~" class="" style="width:386px">High-risk diet (eg, high in saturated fats, trans fats, and calories)</td><td id="F@WL" class="" style="width:449px"></td></tr><tr id="3df412f3-0a42-4a0c-a498-1928be01ad50"><td id="aip~" class="" style="width:386px">Psychosocial stress (eg, depression)</td><td id="F@WL" class="" style="width:449px"></td></tr><tr id="1adde1ef-dcdd-4237-86ec-dd78e01176c2"><td id="aip~" class="" style="width:386px">Heart disorders (particularly disorders that predispose to emboli, such as acute MI, infective endocarditis, and atrial fibrillation)</td><td id="F@WL" class="" style="width:449px"></td></tr><tr id="d047f5fd-cd62-457e-b63a-bce6091f747d"><td id="aip~" class="" style="width:386px">Hypercoagulability (thrombotic stroke only)</td><td id="F@WL" class="" style="width:449px"></td></tr><tr id="9aed1696-7b51-45e6-88dc-b5997d72d729"><td id="aip~" class="" style="width:386px">Use of certain drugs (eg, cocaine, amphetamines)</td><td id="F@WL" class="" style="width:449px"></td></tr></tbody></table><h3 id="dd3a6e88-3efb-4044-bf69-78b5283a3570" class=""><mark class="highlight-blue"><strong>Symptoms and Signs: </strong></mark></h3><ul id="13dc4206-cee6-48f0-82dc-ac3ffbff950d" class="bulleted-list"><li style="list-style-type:disc">Facial asymmetry.</li></ul><ul id="b93eac22-7ca4-4ecb-a0e3-7fe94ae95efb" class="bulleted-list"><li style="list-style-type:disc">Lateralized limb weakness or clumsiness.</li></ul><ul id="3844fb0d-b298-4f1f-bcc7-e54e926f3de4" class="bulleted-list"><li style="list-style-type:disc">Lateralized numbness or paresthesia.</li></ul><ul id="3cf449b1-d9eb-4767-85bb-fb6bbb3d4a32" class="bulleted-list"><li style="list-style-type:disc">Slurred or confused speech.</li></ul><ul id="2f26081a-008d-4629-aa02-491e6d02d595" class="bulleted-list"><li style="list-style-type:disc">Visual disturbances (diplopia or difficulty seeing).</li></ul><ul id="c10b6efa-59bb-46ac-877d-b3aa4a0b81f7" class="bulleted-list"><li style="list-style-type:disc">Dizziness or vertigo.</li></ul><ul id="85199755-295b-4e63-b881-e20008eed653" class="bulleted-list"><li style="list-style-type:disc">Gait instability.</li></ul><ul id="7a7f762e-4961-468e-b3fa-5936cee7c49f" class="bulleted-list"><li style="list-style-type:disc">Headache.</li></ul><ul id="769bd50b-293d-4d3d-8a01-b7b80e93cc0f" class="bulleted-list"><li style="list-style-type:disc">Alterations in level of consciousness.</li></ul><hr id="5cbc1eef-e911-4222-ae0e-52104634ebba"/><h3 id="29ca1b84-ddf8-4f43-a481-9010f200b266" class=""><mark class="highlight-blue"><strong>Transient ischemic attack (TIA):</strong></mark></h3><ul id="31067d6b-0721-4d06-80e6-653ce6e313cc" class="bulleted-list"><li style="list-style-type:disc"><em><strong>Transient ischemic attack</strong></em> (<em><strong>TIA</strong></em>) was originally defined as symptoms of a stroke that resolve within 24 hours, without evidence of acute cerebral infarction (based on diffusion-weighted MRI).</li></ul><ul id="9e63e4bf-742d-4c1d-b37a-03a72501bea2" class="bulleted-list"><li style="list-style-type:disc">Transient ischemic attacks often precede a full stroke. </li></ul><ul id="c6cbf4fa-14d6-4ac0-a1b5-f8b3bea985ce" class="bulleted-list"><li style="list-style-type:disc">A <em><strong>crescendo TIA</strong></em> is where there are two or more TIAs within a week. This carries a high risk of developing in to a stroke.</li></ul><hr id="d0dc30aa-170b-4a11-bbd7-dc4ef8e5a3e2"/><h3 id="588fb3a0-2253-44b0-941a-442ded6280a4" class=""><mark class="highlight-blue"><strong>Stroke Scale:</strong></mark></h3><div id="f09d3ce6-2c12-4bd3-8492-bc639263aba1" class="column-list"><div id="a344b813-80af-499a-9ec2-83d3a788c21f" style="width:50%" class="column"><p id="698988de-4cf4-4eb9-b389-d6b13bd0e4af" class="">
+</p><figure id="1f91e77d-cf5d-414c-8dd8-6b9308bfca51" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/5long1.png"><img style="width:487px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/5long1.png"/></a></figure></div><div id="3cc02d29-9b63-4aee-a3eb-eceb1ce50b06" style="width:50%" class="column"><figure id="b62868bf-2b1e-40ba-a51c-79e4453118de" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%201.png"><img style="width:1063px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%201.png"/></a></figure></div></div><hr id="8dba1d94-c453-47a1-af5d-37e540f50e2f"/><h3 id="c09605ad-bf1c-4369-8949-fd29d1cab68e" class=""><mark class="highlight-blue"><strong>Evaluation of Stroke:  </strong></mark></h3><div id="35de6649-9f2f-4f41-8815-3f4bf12a5bb2" class="column-list"><div id="b84a4bfa-a030-4d74-9a51-1c02e1a7d36f" style="width:50%" class="column"><p id="d0ee7a5e-1128-4213-931f-1727451ca3fe" class=""><span style="border-bottom:0.05em solid"><strong>Evaluation aims to establish the following:</strong></span></p><ul id="d658ebf2-b277-440d-886b-ae4cf9c4d78f" class="bulleted-list"><li style="list-style-type:disc">Whether stroke has occurred.</li></ul><ul id="e30e6eb9-e80d-43fc-8dba-e71f07107d04" class="bulleted-list"><li style="list-style-type:disc">Whether stroke is ischemic or hemorrhagic.</li></ul><ul id="784d68a1-e1af-48f4-a939-cdf736cf9ea4" class="bulleted-list"><li style="list-style-type:disc">Whether emergency treatment is required.</li></ul><ul id="728470f7-9e08-493a-8fef-0de50ed6d6d2" class="bulleted-list"><li style="list-style-type:disc">What the best strategies for preventing subsequent strokes are.</li></ul><ul id="054b4ef7-2bf3-4df2-9b4c-51a132a94871" class="bulleted-list"><li style="list-style-type:disc">Whether and how to pursue rehabilitation.</li></ul></div><div id="87715f2e-f034-4f46-8f51-d820116a9f38" style="width:50%" class="column"><p id="6d406602-f8d7-4dfa-be49-2a2b033446ff" class=""><span style="border-bottom:0.05em solid"><strong>Stroke is suspected in patients with any of the following:</strong></span></p><ul id="5ef831f8-237f-43a6-97e9-bb75d7d0bdb7" class="bulleted-list"><li style="list-style-type:disc">Sudden neurologic deficits compatible with brain damage in an arterial territory</li></ul><ul id="728cb1e7-12ca-4934-9cb9-3314293cca4a" class="bulleted-list"><li style="list-style-type:disc">A particularly sudden, severe headache</li></ul><ul id="abbe8d4b-4551-4cde-ab3a-490e4b22cefd" class="bulleted-list"><li style="list-style-type:disc">Sudden, unexplained coma</li></ul><ul id="046f4d3f-1e09-4117-ae70-9b834e49e7ad" class="bulleted-list"><li style="list-style-type:disc">Sudden impairment of consciousness</li></ul></div></div><hr id="ac804f3a-46ce-40cf-b227-f4836e760df4"/><h3 id="9cedecf1-bef8-4b92-a0c0-c01d59f3e3ac" class=""><mark class="highlight-blue"><strong>Ischemic Stroke:</strong></mark></h3><p id="77054b0c-54b1-47a4-9753-bf3822faea72" class="">The most common causes of ischemic stroke can be classified as:</p><ul id="f194980d-4dee-49bc-be69-a22613b33571" class="bulleted-list"><li style="list-style-type:disc">Cryptogenic (ie, no clear cardioembolic, lacunar, or atherosclerotic source).</li></ul><ul id="bb7a761f-f121-4d1b-954e-d69ec071868b" class="bulleted-list"><li style="list-style-type:disc">Cardioembolism (embolic infarction).</li></ul><ul id="80cd7ad0-752a-4d6b-acf0-2333d717f7e6" class="bulleted-list"><li style="list-style-type:disc">Lacunar infarcts- nonthrombotic occlusion of small, deep cerebral arteries.</li></ul><ul id="d20970c8-db52-4789-b3cd-c64a6c03bfcc" class="bulleted-list"><li style="list-style-type:disc">Large-vessel atherosclerosis -atherothrombotic occlusion of large arteries.</li></ul><ul id="a0e59c91-ae45-4b12-9c16-d611025ee93b" class="bulleted-list"><li style="list-style-type:disc">Proximal arterial stenosis with hypotension that decreases cerebral blood flow in arterial watershed zones -hemodynamic stroke.</li></ul><hr id="f47fa010-f77d-49e5-93ee-292ffe39cbf2"/><h3 id="9900597f-b8c3-47e9-b063-e6bf2282a0d7" class=""><mark class="highlight-blue"><strong>Large-vessel atherosclerosis:</strong></mark></h3><p id="397155a4-7999-49fe-9342-cfa0ed03940b" class=""><span style="border-bottom:0.05em solid"><strong>Large-vessel atherosclerosis can affect intracranial or extracranial arteries.</strong></span></p><ul id="276767c7-d3b6-43c1-990f-31bb117fb041" class="bulleted-list"><li style="list-style-type:disc">Atheroma, particularly if ulcerated, predispose to thrombi. </li></ul><ul id="f7aa1018-9ba9-4277-ba6f-9ad2e30be400" class="bulleted-list"><li style="list-style-type:disc">Atheroma can occur in any major cerebral artery and are common at areas of turbulent flow, particularly at the carotid bifurcation. </li></ul><ul id="0f2846e7-5a0a-4bba-9ad8-d8bfd0543064" class="bulleted-list"><li style="list-style-type:disc">Partial or complete thrombotic occlusion occurs most often at the main trunk of the middle cerebral artery and its branches but is also common in the large arteries at the base of the brain, in deep perforating arteries, and in small cortical branches. </li></ul><ul id="5f2b5750-bd23-465e-858c-7904c907b87d" class="bulleted-list"><li style="list-style-type:disc">The basilar artery and the segment of the internal carotid artery between the cavernous sinus and supraclinoid process are often occluded</li></ul><p id="fd3aa97f-2068-4e9f-9d6d-6b92e5c77ccd" class="">
+</p><figure id="bfa94972-58db-4ab9-a275-daefda6a0aad" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%202.png"><img style="width:980px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%202.png"/></a></figure><p id="31516de6-461d-40df-b242-4e5032a747d5" class="">
+</p><hr id="047e4bdd-a757-463c-ab5d-5352a55cb236"/><h3 id="45db05d6-b2d3-4fa7-ab4e-f0e2d927db35" class=""><mark class="highlight-blue"><strong>Cardioembolism: </strong></mark></h3><ul id="0b379b56-4932-40b1-89b2-1fdb1bf8d386" class="bulleted-list"><li style="list-style-type:disc">Atrial fibrillation.</li></ul><ul id="58976ff8-8597-40b3-b7ab-04a88b30a21b" class="bulleted-list"><li style="list-style-type:disc">Rheumatic heart disease (usually mitral stenosis).</li></ul><ul id="e23e04d4-a226-4036-9e14-30a2989cc345" class="bulleted-list"><li style="list-style-type:disc">Post–myocardial infarction.</li></ul><ul id="0832459b-b159-4800-b5c9-8000dd5974e3" class="bulleted-list"><li style="list-style-type:disc">Vegetations on heart valves in bacterial or marantic endocarditis.</li></ul><ul id="f027c3bc-a7a9-4c71-82f4-a26e6f33e602" class="bulleted-list"><li style="list-style-type:disc">Prosthetic heart valves.</li></ul><ul id="c05bb2c7-e6af-4eeb-bcc8-a1875db550a9" class="bulleted-list"><li style="list-style-type:disc">Mechanical circulatory assist devices (e.g., left ventricular assist device, or LVAD).</li></ul><ul id="7191decd-a5e0-4de0-a4fe-74aa1377782f" class="bulleted-list"><li style="list-style-type:disc">Clots that form after open-heart surgery and atheroma in neck arteries or in the aortic arch.</li></ul><ul id="67a03c69-2a18-4bbc-a700-9cc37a6c3530" class="bulleted-list"><li style="list-style-type:disc">Rarely, emboli consist of fat (from fractured long bones), air (in decompression sickness), or venous clots that pass from the right to the left side of the heart through a patent foramen ovale with shunt (paradoxical emboli). Emboli may dislodge spontaneously or after invasive cardiovascular procedures (e.g., catheterization).</li></ul><ul id="a4b3a2a2-4ccf-47ce-85a6-c042de5b20d9" class="bulleted-list"><li style="list-style-type:disc">Rarely, thrombosis of the subclavian artery results in embolic stroke in the vertebral artery or its branches.</li></ul><p id="b1a793e2-300b-4d69-96ed-c782f744040b" class="">
+</p><figure id="abf9bcbb-a26b-4f0d-9157-214711a565b5" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/ACLS-Figure-30.jpg"><img style="width:624px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/ACLS-Figure-30.jpg"/></a></figure><hr id="6c5f9392-ce38-4c1f-a0d6-b6e32674178f"/><h3 id="5c747865-00fb-4b3f-8e86-03af6429c58f" class=""><mark class="highlight-blue"><strong>Lacunar Infarcts: </strong></mark></h3><ul id="dee3d71f-8298-4e1c-bdde-09625d4ed62a" class="bulleted-list"><li style="list-style-type:disc">A “lacune” is a small cavity (&lt;1.5 cm) remaining in the brain tissue that develops after the necrotic tissue of a deep infarct has been removed (lacune in Latin means small lake). </li></ul><ul id="e335ee82-c677-498d-9bcb-5b986fc1d045" class="bulleted-list"><li style="list-style-type:disc">Lacunes typically follow as a result of lacunar stroke. Lacunar stroke is a result of blockage of blood flow to a single small deep penetrating vessel (lacunar strokes as also known as small vessel disease) supplying the subcortical white matter region, basal ganglia, internal capsule, corona radiata, thalamus, or paramedian pons. </li></ul><ul id="47e260df-2aa1-4921-afbd-c4aef16ee65f" class="bulleted-list"><li style="list-style-type:disc">The blood vessels responsible for these areas include the lenticulostriates of the MCA, the thalamogeniculate arteries of the PCA and the paramedian perforators of the basilar artery. </li></ul><ul id="041d1de7-b33e-404a-b0d5-8dd235064459" class="bulleted-list"><li style="list-style-type:disc">The pathogenesis is thought to involve lipohyalinosis or formation of microatheroma within the penetrating vessel.</li></ul><p id="8a039b35-0fd6-4876-a5e7-e700ed75e418" class="">
+</p><p id="45a72756-dccc-45dc-a4ba-ba939e1d5e1f" class=""><span style="border-bottom:0.05em solid"><strong>Characteristics</strong></span>: </p><ul id="58d21dc3-2ffb-45a3-9488-ec621efe16ba" class="bulleted-list"><li style="list-style-type:disc">small (≤ 1.5 cm) infarcts.</li></ul><ul id="b8de05d9-8a49-4c67-885c-00391e4e0a8a" class="bulleted-list"><li style="list-style-type:disc">result from nonatherothrombotic obstruction of small, perforating arteries that supply deep cortical structures.</li></ul><ul id="46b21b89-9eaa-4f65-ac4d-d4e6ce55ea3c" class="bulleted-list"><li style="list-style-type:disc">the usual cause is lipohyalinosis (degeneration of the media of small arteries and replacement by lipids and collagen).</li></ul><ul id="26a3e11c-67da-40f3-b413-a23669bef48b" class="bulleted-list"><li style="list-style-type:disc">lacunar infarcts tend to occur in older patients with diabetes or poorly controlled hypertension.</li></ul><p id="23a90376-8a59-43ee-891b-483ea9eaff34" class="">
+</p><p id="dfbb6450-ac36-4f29-af77-7dd857e95e63" class=""><span style="border-bottom:0.05em solid"><strong>Imaging:</strong></span></p><p id="c342ee1a-b4b1-4200-8ac3-bff5f4e81e92" class="">MRI Axial Flair Brain shows a lacunar infarct in the region of the posterior limb of the right internal capsule.</p><figure id="1ceb52cb-5a70-4220-9e2d-db45920bac11" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%203.png"><img style="width:1104px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%203.png"/></a></figure><p id="d385fc3b-e70e-48cb-91a8-7231010fdc48" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ea5195be-3792-42dc-8098-d605aef37264"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Remember that lacunar strokes are NOT associated with cortical findings such as aphasia, apraxia, neglect or visual field abnormalities.</strong></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="6bb37432-6738-4dc4-bcca-421c98a480c2"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Multi lacunar state also known as Binswanger&#x27;s disease</strong> often results in a subcortical dementia characterized by memory loss, altered mood and cognition dysfunction along with focal motor and sensory changes. Usually have chronic hypertension and / or diabetes. Other prominent features of the disease include urinary incontinence, a slow unstable gait, tremors, clumsiness, behavioral and personality changes, lack of facial expression and speech difficulties.</div></figure><p id="346b0098-620b-4be2-a4ab-51727ef8acfb" class="">
+</p><p id="5e31b0c1-0278-4759-bab9-88ce71e24741" class=""><span style="border-bottom:0.05em solid"><strong>Common Lacunar Syndromes:</strong></span></p><figure id="149ac2c1-5966-43ea-a30f-4fb92a974858" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%204.png"><img style="width:1248px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%204.png"/></a></figure><figure id="2a3b4636-ea9b-4676-8fff-05b974723d8a" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%205.png"><img style="width:1248px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%205.png"/></a></figure><p id="133c8b98-a7c1-41fe-a0d1-704f0577ba50" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="ebaac9ee-5d6e-4eac-a61e-e210da99cd0c"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><span style="border-bottom:0.05em solid"><strong>Pure motor stroke: </strong></span>usually arises from infarction in the posterior limb of the internal capsule; course is often stuttering over hours to days:</div></figure><figure id="51d58eb6-e81d-4c9e-b009-4589249d8f00" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%206.png"><img style="width:238px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%206.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="a0d50d2c-41a9-4249-99e8-f35d63e5248f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><span style="border-bottom:0.05em solid"><strong>Pure sensory stroke:</strong></span> usually arises from thalamic infarction:</div></figure><figure id="08d85ee4-0e76-428b-a9ad-d2caecf4343b" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%207.png"><img style="width:229px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%207.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="19ea8ff9-4e99-48ef-89eb-db4b64ed3874"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><span style="border-bottom:0.05em solid"><strong>Sensorimotor stroke:</strong></span> can arise from infarcts at the junction between the thalamus and the internal capsule</div></figure><p id="077473d6-e56b-4355-addb-d0df2d05db39" class="">As the name implies, the symptoms consist of weakness and sensory loss with no visual field deficit, aphasia, neglect or other symptoms.</p><figure id="3dcdf882-4fc7-43ff-82d8-08031ce598aa" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%208.png"><img style="width:192px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%208.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="40299904-45e7-4322-bf01-4fd952ff48c5"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><span style="border-bottom:0.05em solid"><strong>Ataxic hemiparesis:</strong></span> often arises from infarction in the corona radiata, Ataxia is unilateral and is in excess of the mild weakness found on exam</div></figure><figure id="908b4d0c-5a7b-4683-aece-028f07b84230" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%209.png"><img style="width:240px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%209.png"/></a></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e2b819eb-1b03-4974-9edd-5154792d7266"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><span style="border-bottom:0.05em solid"><strong>Clumsy hand-dysarthria</strong></span> is caused by infarction in the pons, but can also occur in corona radiata and the internal capsule, Contralateral facial weakness with dysarthria and dysphagia occurs with contralateral hand weakness/ataxia, and sometimes weakness in the arm or leg.</div></figure><figure id="dc3648b3-2612-43d4-96c3-f62a63a3bfa0" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2010.png"><img style="width:240px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2010.png"/></a></figure><hr id="bcd50db8-3195-44d8-a394-ed1a1c0fc6a8"/><h3 id="f8f189ce-f805-4cc1-a2b8-5edd2626705c" class=""><mark class="highlight-blue"><strong>Penumbra:</strong></mark></h3><ul id="25d5d2e2-c205-4893-ade3-0e92d333fb90" class="bulleted-list"><li style="list-style-type:disc">Acute stroke causes an irreversibly damaged ischemic core and salvageable surrounding tissue. </li></ul><ul id="6be4602e-ef36-45d2-9d2e-b0cb823ca373" class="bulleted-list"><li style="list-style-type:disc">“Penumbra” is the term used for the reversibly injured brain tissue around ischemic core; which is the pharmacological target for acute ischemic stroke treatment.</li></ul><ul id="b28e86ce-20b7-4dd6-ac38-b8f2b8e4b15e" class="bulleted-list"><li style="list-style-type:disc">The goal to treat ischemic stroke is to salvage the penumbra as much and early as possible. </li></ul><ul id="187f096f-94db-431a-9127-74895aca2131" class="bulleted-list"><li style="list-style-type:disc">It has been reported that roughly half of all acute ischemic patients show penumbra on MRI and are potentially treatable. </li></ul><ul id="7e4dda7f-397c-437c-b6fc-5191dbb5993b" class="bulleted-list"><li style="list-style-type:disc">However, only 8% of all ischemic stroke patients eligible for treatment with recombinant tissue plasminogen activator (r-tPA).</li></ul><figure id="ba887478-5716-425e-b491-a60638dc1c57" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2011.png"><img style="width:1296px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2011.png"/></a></figure><hr id="54db4a43-fb59-47a2-9b72-4a0362c84dad"/><h3 id="529b54b2-0a02-4c05-8587-7cb9815c668a" class=""><mark class="highlight-blue"><strong>Anterior Circulation Stroke: </strong></mark></h3><div id="8fe534df-8dae-42a3-a662-882d166e0615" class="column-list"><div id="d9ca7412-66b5-4215-b093-931bcee496fa" style="width:50%" class="column"><ul id="97e12537-69e6-4e18-b750-085d9e59bc5c" class="bulleted-list"><li style="list-style-type:disc">Occlusion of the ICA (Internal carotid artery)  can result in ischemia in both MCA and ACA territory simultaneously.</li></ul><p id="62bb191b-b56a-4cf2-985b-447cb8eabb1d" class="">
+</p><p id="9ce35780-60b2-4337-b3e5-2bc976f40257" class=""><span style="border-bottom:0.05em solid"><strong>Middle cerebral artery: </strong></span></p><ul id="1d9068f1-317b-4324-afd3-085448723f42" class="bulleted-list"><li style="list-style-type:disc">About two-thirds of all ischemic stroke occurs in the middle cerebral artery territory.</li></ul><ul id="8cc6180a-224c-400d-9cda-4dc6861e59be" class="bulleted-list"><li style="list-style-type:disc">MCA stroke can involve the frontal, temporal, and parietal lobes.</li></ul><ul id="3c90b4c9-41c7-4167-a95b-644131e1f13c" class="bulleted-list"><li style="list-style-type:disc">MCA stroke can also involve the basal ganglia through the lenticulostriate arteries.</li></ul><p id="89c74d79-b051-4894-9cd1-abd551b6f229" class=""><em>CT scan image taken at the basal ganglionic level:</em></p><figure id="930d8322-cfca-4541-9c33-0fe8c1ada6cd" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2012.png"><img style="width:288px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2012.png"/></a></figure></div><div id="e82a4772-338f-47a5-af55-da8e3660145a" style="width:33.33333333333333%" class="column"><figure id="0a18a1be-8d17-493d-be15-85c72e5aeb4a" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2013.png"><img style="width:480px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2013.png"/></a></figure><figure id="996cbe9e-4c09-435d-8b19-9f48612e4dce" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2014.png"><img style="width:825px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2014.png"/></a></figure></div><div id="108c560f-3c21-4bca-b8eb-5fdf3d9c5371" style="width:16.666666666666664%" class="column"><figure id="327be2ac-1ae5-47e8-bfc1-3a2eeb57d1f8" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2015.png"><img style="width:361px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2015.png"/></a></figure></div></div><p id="e3c6d89a-a4b9-4043-b6cf-024bd4db819e" class=""><span style="border-bottom:0.05em solid"><strong>MCA stroke syndromes: </strong></span></p><table id="0809a0f2-181e-40f8-b74d-ec6234de7f4e" class="simple-table"><thead class="simple-table-header"><tr id="85438732-add8-4cd1-9360-f2d8cfe1be8e"><th id="]B|P" class="simple-table-header-color simple-table-header" style="width:599px"><strong>Left hemisphere (i.e., dominant)</strong></th><th id="HOfv" class="simple-table-header-color simple-table-header" style="width:547px"><strong>Right hemisphere (i.e., nondominant)</strong></th></tr></thead><tbody><tr id="9b19230f-ee6c-496a-bf5f-9954ab60b8c8"><td id="]B|P" class="" style="width:599px">Right hemiparesis - Variable involvement of face and upper and lower extremity.</td><td id="HOfv" class="" style="width:547px">Left hemiparesis - Same pattern as on right</td></tr><tr id="b7c60cc4-7096-4e1b-8535-1de051838671"><td id="]B|P" class="" style="width:599px">Right-sided sensory loss in a pattern similar to that of the motor deficit - Usually involves all modalities, decreased stereognosis, and agraphesthesia, left-right confusion</td><td id="HOfv" class="" style="width:547px">Left-sided sensory loss - Similar pattern that of the motor deficit</td></tr><tr id="a80f1bcf-de45-47db-88dc-102bac8fa1b4"><td id="]B|P" class="" style="width:599px">Right homonymous hemianopia</td><td id="HOfv" class="" style="width:547px">Left homonymous hemianopia - Same pattern as
+on right</td></tr><tr id="e751e788-c1db-4feb-956c-d400f753e5e5"><td id="]B|P" class="" style="width:599px">Dysarthria, Aphasia, fluent and nonfluent</td><td id="HOfv" class="" style="width:547px">Dysarthria, Neglect of the left side of environment, Anosognosia, Asomatognosia</td></tr><tr id="93bf4a5e-ead8-4131-9f6f-4ee98a7f1941"><td id="]B|P" class="" style="width:599px">Alexia, Agraphia, Acalculia, Apraxia</td><td id="HOfv" class="" style="width:547px">Loss of prosody of speech,
+Flat affect</td></tr></tbody></table><p id="15cdbb85-b911-4ee6-ba1a-dbc5649a4aa0" class=""><span style="border-bottom:0.05em solid"><strong>Anterior cerebral artery: (ACA stroke syndrome):</strong></span></p><ul id="02114c0e-c495-44ff-9702-5999f08e6a90" class="bulleted-list"><li style="list-style-type:disc">Contralateral leg paresis &gt; arm paresis.</li></ul><ul id="15136298-07bb-4f54-a197-9d95cf9c354c" class="bulleted-list"><li style="list-style-type:disc">Or, bilateral leg weakness if both ACAs are involved.</li></ul><ul id="065d3e4d-a9df-4bd4-88a7-a6eeddc22926" class="bulleted-list"><li style="list-style-type:disc">Abulia, disinhibition, executive dysfunction.</li></ul><ul id="af25c814-ceea-4c80-be18-2e95799508e8" class="bulleted-list"><li style="list-style-type:disc">In some cases, akinetic mutism if bilateral caudate head infarction.</li></ul><ul id="72b5cc6f-d83a-4c91-8b66-e7d681ad2794" class="bulleted-list"><li style="list-style-type:disc">contralateral hemiparesis (maximal in the leg)</li></ul><ul id="476f04aa-b540-460e-b464-8468f0ccf69e" class="bulleted-list"><li style="list-style-type:disc">urinary incontinence</li></ul><ul id="5667b1b6-001a-413a-ab1a-aafff606a140" class="bulleted-list"><li style="list-style-type:disc">apathy, confusion, poor judgment, mutism, grasp reflex, gait apraxia</li></ul><ul id="9d80cd47-b254-4906-91bd-6ee3a7ff1f6f" class="bulleted-list"><li style="list-style-type:disc">contralateral cortical sensory disturbance – astereognosis (the inability to identify objects by feel only, in the absence of input from the visual system)</li></ul><p id="18a676e6-7d91-49e6-a241-c91efd561af4" class="">
+</p><div id="f3637bf2-355c-4744-bd97-2202a4e06118" class="column-list"><div id="a0b784fb-8f4b-49b9-a540-8435227765c0" style="width:68.75%" class="column"><p id="68825253-4946-440d-85fa-91e6d372e5f4" class=""><span style="border-bottom:0.05em solid">E</span><span style="border-bottom:0.05em solid"><strong>x:</strong></span> 60 yo M (RHD) with severe right leg weakness, mild right arm weakness and hypobulia.</p><figure id="1ccc5254-cfa0-43ab-821f-78e4e5d20d69" class="image" style="text-align:center"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2016.png"><img style="width:384px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2016.png"/></a></figure></div><div id="fda101b0-46f2-42f4-b086-7982630f9aa1" style="width:31.250000000000007%" class="column"><figure id="cb2df195-d7ef-418c-822f-da321134daed" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2017.png"><img style="width:432px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2017.png"/></a></figure></div></div><p id="3a7ef69a-f4ac-4343-b2e2-cf103f6c5390" class="">
+</p><p id="ebd515dc-ef80-4584-8de2-1988cbe87a09" class="">
+</p><figure id="1420e81b-4733-449d-bc8b-d5301962d1a6" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2018.png"><img style="width:864px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2018.png"/></a></figure><p id="89b3e834-b42f-4f80-9658-c0686eaaf70e" class="">
+</p><p id="f9e53ccf-97d3-478f-85c6-513d4c21097b" class=""><span style="border-bottom:0.05em solid"><strong>ACA-MCA Ischemic Stroke (CT): </strong></span></p><p id="53a4ef78-d51f-418f-aa75-3f82b1dc9ffa" class="">This type of infarction occurs when the clot is located at the top of the carotid artery and there is no collateral flow from the contralateral side through ACOM.  Occlusions of the distal ICA affect both the superior and inferior divisions of the MCA, as well as the lenticulostriates, resulting in a contralateral hemiplegia (face, arm and leg); contralateral hemisensory loss; a contralateral visual field deficit, and often a gaze preference to the ipsilateral side. With an infarct in the dominant hemisphere, there is often an associated global aphasia (expressive and receptive); with a non-dominant infarct, there is often a neglect syndrome and impairment of visuospatial skills (e.g., drawing, copying, dressing).</p><p id="ed613959-d414-4e74-97ee-b661030e6a88" class="">
+</p><p id="822c86d9-a5b9-4991-a0de-7be1076fd499" class=""><strong><em>Axial CT study of Brain shows a sub acute ischemic infarct in the distribution of the left middle cerebral artery (MCA) and anterior cerebral artery (ACA):</em></strong></p><figure id="4fd22035-421b-450a-941a-052545b5bc25" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2019.png"><img style="width:624px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2019.png"/></a></figure><p id="8fdd15d0-3f49-4971-b37a-07fd085b5cbc" class="">
+</p><hr id="bb5c24fb-05f3-4915-a3e0-c013076fba72"/><div id="4d4b89ca-d18f-46ec-97d7-920b526746f7" class="column-list"><div id="bda4ebdb-4684-4cfc-8b3c-daeaef37ce9a" style="width:62.5%" class="column"><h3 id="71b8a114-fa63-4e9a-8e58-4dab429412c4" class=""><mark class="highlight-blue"><strong>Posterior Circulation: </strong></mark></h3><p id="5149dcb8-09cb-4fa3-9866-df63fb033589" class="">This includes:</p><ul id="e5ee93fc-bc27-41c6-86f7-bd6682753910" class="bulleted-list"><li style="list-style-type:disc">Vertebral arteries.</li></ul><ul id="052221d5-8aab-4328-8ce1-692f6994b745" class="bulleted-list"><li style="list-style-type:disc">Posterior and anterior inferior cerebellar artery.</li></ul><ul id="843ac01a-0575-40ee-832c-9a006aa3fbb5" class="bulleted-list"><li style="list-style-type:disc">Basilar artery.</li></ul><ul id="62b38567-d300-4336-9219-488f73fb0d84" class="bulleted-list"><li style="list-style-type:disc">Pontine arteries.</li></ul><ul id="91d1945f-d1df-4930-af3d-b731e4bd9973" class="bulleted-list"><li style="list-style-type:disc">Superior cerebellar artery.</li></ul><ul id="06e9020b-94af-4429-bd25-404d533d85a1" class="bulleted-list"><li style="list-style-type:disc">Posterior cerebral artery.</li></ul><p id="52855696-9cdd-455d-b0e4-5e6b75473256" class="">
+</p><p id="59f69b0b-dbf0-4cc8-964d-d4967091683b" class=""><span style="border-bottom:0.05em solid"><strong>Left PCA infarction on CT: </strong></span></p><figure id="99c41e74-0200-4555-b745-a333f3cf731a" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2020.png"><img style="width:960px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2020.png"/></a></figure></div><div id="87a02b3d-0768-4635-b441-fdf847219d65" style="width:37.50000000000001%" class="column"><figure id="92bcd342-5df6-483b-afef-1e101072af6a" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2021.png"><img style="width:536px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2021.png"/></a></figure></div></div><p id="337a9443-96bf-48a2-ab62-502e7cce5c7a" class="">
+</p><p id="b9600067-3741-4553-a01d-c3e918306d65" class=""><span style="border-bottom:0.05em solid"><strong>Diffusion-weighted imaging (DWI):</strong></span></p><p id="59b5540c-10db-428d-a8d1-9b0fcfc7942f" class=""> Is a form of MR imaging based upon measuring the random Brownian motion of water molecules within a voxel of tissue. In general simplified terms, highly cellular tissues or those with cellular swelling exhibit lower diffusion coefficients. Diffusion is particularly useful in tumor characterization and cerebral ischemia.</p><ul id="ab328fb7-b84a-4e6a-b377-7bf001b35b51" class="bulleted-list"><li style="list-style-type:disc">Early identification of ischemic stroke</li></ul><ul id="fbbc5282-961e-4ef4-979c-6dd9b955d196" class="bulleted-list"><li style="list-style-type:disc">Differentiation of acute from chronic stroke</li></ul><ul id="c7528807-a2de-4f13-82a3-ec0be5ad650c" class="bulleted-list"><li style="list-style-type:disc">Differentiation of acute stroke from other stroke mimics</li></ul><p id="d1f18d30-61cb-492f-939e-4ce8fd170fbe" class="">
+</p><p id="800bcaa8-e7d8-4d6f-90f8-d15068b1fd93" class=""><span style="border-bottom:0.05em solid"><strong>Posterior cerebral artery Stroke: </strong></span></p><ul id="5e5d14bd-e443-49b7-8336-be519913d5cc" class="bulleted-list"><li style="list-style-type:disc">PCA territory infarct is most often caused by a cardiac embolus or an embolus from an occluded or stenotic proximal vertebral or basilar artery.</li></ul><ul id="daa178c9-c06b-4e6b-bcc5-81ba2a8e74cb" class="bulleted-list"><li style="list-style-type:disc">The basilar artery bifurcates into right and left PCAs at its termination, which then course around the midbrain in the ambient and quadrigeminal cisterns to supply the medial / inferior temporal lobe and the medial occipital lobe. Small perforators arise from the proximal PCAs, which supply the cerebral peduncle as well as the thalamus (the latter known as thalamoperforators).</li></ul><ul id="373f8f96-1edd-45c5-83f6-50607d9de5ac" class="bulleted-list"><li style="list-style-type:disc">Infarctions in the territory of the PCA most often result in a contralateral hemianopsia. </li></ul><ul id="db9c0377-2342-4f7a-a154-2b6ded88ac97" class="bulleted-list"><li style="list-style-type:disc">Other signs and symptoms depend on whether the infarction involves the thalamoperforator territory. Proximal PCA involvement results in coexistent infarction of the lateral thalamus, with contralateral hemisensory findings. </li></ul><ul id="616bffa9-c923-441a-97b7-c3141cf898de" class="bulleted-list"><li style="list-style-type:disc">Infarction of either PCA may result in impaired memory (verbal on the left; spatial on the right). In addition, left PCA lesions are sometimes associated with alexia without agraphia (patients can write, but cannot read what they have written); transcortical sensory aphasia (a receptive aphasia similar to Wernicke&#x27;s aphasia except that repetition is relatively spared); and Gerstmann&#x27;s syndrome (a combination of acalculia, finger agnosia, agraphia, and right/left confusion). With right sided PCA lesions, patients may have a visual neglect. </li></ul><ul id="b7889730-29cf-45f1-b4c9-60ee32b8712f" class="bulleted-list"><li style="list-style-type:disc">They may also have prosopagnosia, an inability to recognize familiar faces.</li></ul><p id="08c8a17a-d74e-49be-ad24-d384922a9c16" class="">
+</p><p id="23384830-69fc-488f-b160-2992bfff6845" class="">Main Symptoms: </p><ul id="c9fce5ec-bbff-41de-835d-11560cb5f31d" class="bulleted-list"><li style="list-style-type:disc">contralateral homonymous hemianopia </li></ul><ul id="513ffa59-855f-4258-84b7-a4589cdf0bc1" class="bulleted-list"><li style="list-style-type:disc">unilateral cortical blindness</li></ul><ul id="57cddb9d-fa9e-4279-909f-cdc5cb2ce2f8" class="bulleted-list"><li style="list-style-type:disc">memory loss</li></ul><ul id="945a8714-611a-46da-9187-1c6f1d948a5b" class="bulleted-list"><li style="list-style-type:disc">unilateral 3rd cranial nerve palsy</li></ul><ul id="d6d732ef-13c0-4be8-9732-be164bf9983d" class="bulleted-list"><li style="list-style-type:disc">hemiballismus</li></ul><p id="b33e0321-a39f-49fb-a5f2-5980e4eff8a7" class="">
+</p><p id="64a8562f-0faf-4322-a83b-0300a1f1a37a" class=""><strong>MCA-PCA ischemic stroke (CT):</strong></p><p id="dc9c852c-caa5-4744-8e28-a6552bdbd2fe" class="">Simultaneous infarction in the distribution of MCA and PCA arteries can occur from multiple emboli which is possible but uncommon.</p><p id="dc8679bc-01cc-4dd3-b4a9-1d6e4ffe7179" class="">It is more likely that a single occlusion caused this lesion. A number of individuals have a normal anatomic variant known as a persistent fetal circulation, wherein the PCA arises directly from the posterior communicating artery off the internal carotid artery. In this case, an embolus at the top of the internal carotid artery can then infarct the middle cerebral and posterior cerebral artery territories. In this case, the anterior cerebral artery territory is spared, presumably because of an intact anterior communicating artery whereby blood can flow from the contra lateral side.</p><p id="c2e7de41-2883-410a-94d6-58ab90198b29" class="">
+</p><figure id="deb24607-29bf-4402-8c98-24445d628259" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2022.png"><img style="width:672px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2022.png"/></a></figure><p id="b9d77ed5-4328-41d8-913d-6fc74f011f31" class="">
+</p><hr id="9c6f5f62-7f1f-496b-9625-87c9813208a3"/><h3 id="d6773f2a-68e3-433f-880f-34c1f3c73927" class=""><mark class="highlight-blue"><strong>Watershed (cortical border zone) stroke: </strong></mark></h3><ul id="b51b1ed0-f12a-4f6e-ac36-36e4553df899" class="bulleted-list"><li style="list-style-type:disc">A stroke may occur along the borders between territories of arteries (watershed areas); in such areas, blood supply is normally low, particularly if patients have hypotension and/or if major cerebral arteries are stenotic.</li></ul><ul id="649160aa-66e9-48f6-91ea-78dedc9459d7" class="bulleted-list"><li style="list-style-type:disc">MRI Axial Diffusion Brain shows infarcts with restricted diffusion involving fronto parietal and parietal cortex on either side. </li></ul><ul id="07ce7b0a-2f9b-40ab-a531-21d6f9f467dc" class="bulleted-list"><li style="list-style-type:disc">Area of involvement corresponds to ACA - MCA watershed (cortical border zone) anteriorly and MCA - PCA watershed (cortical border zone) posteriorly. </li></ul><ul id="8af56e35-05e7-426d-8d84-697a0b3656c3" class="bulleted-list"><li style="list-style-type:disc">The area between two vascular territories is known as a watershed (border zone). </li></ul><ul id="a2d90722-9160-4c8e-bc50-9194dcc19116" class="bulleted-list"><li style="list-style-type:disc">Watershed infarcts typically occur following reduced perfusion pressure, often secondary to cardiac events or severe bleeding and they are often bilateral. </li></ul><ul id="e48e9616-519c-489b-a362-4c8ad5485803" class="bulleted-list"><li style="list-style-type:disc">When a watershed infarct is seen unilaterally is due to hemodynamic narrowing of a proximal artery. </li></ul><ul id="bdeb6ad1-5b0c-4fe3-b5d2-96dbab74ca5e" class="bulleted-list"><li style="list-style-type:disc">A hemodynamically significant ICA stenosis, ischemia first occurs along the border zone between the ACA - MCA or MCA - PCA territory on that side. </li></ul><ul id="d17e4d98-28c2-499b-a4b6-2899729dde88" class="bulleted-list"><li style="list-style-type:disc">The anterior watershed territory between ACA - MCA corresponds to the shoulder and hip girdle muscles on the motor homunculus, leading to a characteristic clinical deficit, weakness of the shoulder and hip girdle muscles bilaterally often referred to as &quot;the man in the barrel&quot; distribution of weakness. </li></ul><ul id="df5708a9-f9a0-43b0-8795-cc38d25da672" class="bulleted-list"><li style="list-style-type:disc">The posterior watershed territory infarct between the MCA - PCA result in bilateral cortical visual abnormalities, among them cortical blindness, Anton&#x27;s syndrome that is cortical blindness with denial/confabulation and Balint&#x27;s syndrome that is asimultagnosia, optic ataxia, and gaze apraxia. A deep watershed area exists between lenticulostriates below and the cortical branches above characterized by an infarct in basal ganglia and adjacent corona radiata or para ventricular white.</li></ul><p id="7e22764f-1c3d-4d2e-8f12-00162b2b8f1b" class="">
+</p><figure id="94122172-70ad-497c-9bbf-961e0532ab57" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2023.png"><img style="width:720px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2023.png"/></a></figure><p id="05ab58a6-eb3a-4b8c-967b-3ef8c06b37ea" class="">
+</p><hr id="49ea5b6f-ab6a-4dd9-bcc0-009e8ee38689"/><h3 id="87bba598-723d-4a01-8197-eebbc7f50f25" class=""><mark class="highlight-blue"><strong>Binswanger disease:</strong></mark></h3><p id="a3079cb6-5163-43d2-917b-5477b4672330" class="">Binswanger disease is a progressive neurological disorder caused by arteriosclerosis and thromboembolism affecting the blood vessels that supply the white-matter and deep structures of the brain (basal ganglia and thalamus)</p><p id="68964c70-35e9-4e0d-bd00-2f7d0d2ad1e6" class="">
+</p><ul id="758d8252-ed1f-4827-94b2-5beceb017b61" class="bulleted-list"><li style="list-style-type:disc">The most characteristic feature of BD is psychomotor slowness - an increase in the length of time it takes, for example, for the fingers to turn the thought of a letter into the shape of a letter on a piece of paper. </li></ul><ul id="6f670d11-93d4-4fe1-a3c1-85f67b8609ac" class="bulleted-list"><li style="list-style-type:disc">Other symptoms include forgetfulness (but not as severe as the forgetfulness of Alzheimer&#x27;s disease), changes in speech, an unsteady gait, clumsiness or frequent falls, changes in personality or mood (most likely in the form of apathy, irritability, and depression), and urinary symptoms that aren&#x27;t caused by urological disease. Brain imaging, which reveals the characteristic brain lesions of BD, is essential for a positive diagnosis.</li></ul><ul id="b9a80c39-0c3f-4b50-b728-b10cf9a81f42" class="bulleted-list"><li style="list-style-type:disc">There is no specific course of treatment for BD. Treatment is symptomatic. </li></ul><ul id="ff07dedf-d50d-4895-af85-562e15a98361" class="bulleted-list"><li style="list-style-type:disc">People with depression or anxiety may require antidepressant medications such as the serotonin-specific reuptake inhibitors (SSRI) sertraline or citalopram. </li></ul><ul id="13245515-8e3f-4b74-931a-16add24811a7" class="bulleted-list"><li style="list-style-type:disc">Atypical antipsychotic drugs, such as risperidone and olanzapine, can be useful in individuals with agitation and disruptive behavior. Recent drug trials with the drug memantine have shown improved cognition and stabilization of global functioning and behavior. </li></ul><ul id="45fb2d81-741c-4b9f-b3b8-4b29f3dc8ffc" class="bulleted-list"><li style="list-style-type:disc">The successful management of hypertension and diabetes can slow the progression of atherosclerosis, and subsequently slow the progress of BD. Because there is no cure, the best treatment is preventive, early in the adult years, by controlling risk factors such as hypertension, diabetes, and smoking.</li></ul><p id="829ed5f6-4868-4bf6-9893-3b0d529befec" class="">
+</p><figure id="ccc5aed4-a441-475d-8d0f-d2fa17782152" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2024.png"><img style="width:624px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2024.png"/></a></figure><hr id="aa330740-c1e3-4918-a876-1fea983ff3dc"/><h3 id="01edb3a7-2465-49f2-ae7e-4a030679df74" class=""><mark class="highlight-blue"><strong>Moya Moya Disease: </strong></mark></h3><ul id="9f81324e-ec78-4c3c-87cb-26af6a4dd478" class="bulleted-list"><li style="list-style-type:disc">Moya-moya disease is a progressive vasculopathy leading to stenosis of the main intracranial arteries. </li></ul><ul id="ddde61c0-ff97-412e-a55f-aba587e7ec25" class="bulleted-list"><li style="list-style-type:disc">The incidence of moya-moya disease is high in Asian countries; in Europe and North America, the prevalence of the disease is considerably lower. </li></ul><ul id="023dccfd-524b-4f77-b650-61fbfd86c899" class="bulleted-list"><li style="list-style-type:disc">Clinically, the disease may be of ischaemic, haemorrhagic and epileptic type. </li></ul><ul id="323b7641-e2c2-4f8a-87ac-db9736fbc134" class="bulleted-list"><li style="list-style-type:disc">Cognitive dysfunction and behavioral disturbance are atypical symptoms of moyamoya disease. Characteristic angiographic features of the disease include stenosis or occlusion of the arteries of the circle of Willis, as well as the development of collateral vasculature. </li></ul><ul id="9ada364b-4ce1-4f07-9573-b2d74dd67a0e" class="bulleted-list"><li style="list-style-type:disc">Currently, magnetic resonance angiography and CT angiography with multi-row systems are the main imaging methods of diagnostics of the entire range of vascular changes in moya-moya disease. </li></ul><ul id="19be26e9-26a5-41df-8861-59918cf1dff7" class="bulleted-list"><li style="list-style-type:disc">Vascular lesions typical for moyamoya disease may also develop in HCV-infected individuals, patients with cryoglobulinemia, sickle-cell disease, and individuals after radiotherapy of tumours of the optic chiasm.</li></ul><ul id="4d64ca5e-a917-409d-94e7-35cb46896b76" class="bulleted-list"><li style="list-style-type:disc">Cases in which the aetiological factor was determined, are termed ‘moyamoya syndrome’. However, in most of the patients, the lesions are not caused by any known risk factors, i.e. develop in healthy individuals, and are then classified as moyamoya disease.</li></ul><ul id="7b5fc1d5-6117-4f85-aca4-a00f6a61813f" class="bulleted-list"><li style="list-style-type:disc">The disease is most common in children and young adolescents.</li></ul><ul id="5743a6bb-92f9-4704-9ca4-6efb30cf9740" class="bulleted-list"><li style="list-style-type:disc">The most common clinical symptoms of the disease include: sudden onset of hemiplegia, with sensation disturbances and aphasia. There may also appear headaches, vertigo, seizures and involuntary movements. There were reported cases of cognitive dysfunction or psychoorganic syndrome.</li></ul><p id="7ec9bfa6-ef25-4425-9aa3-091a79273cee" class="">
+</p><figure id="58419809-cc1c-4564-bf36-f67c74bc9fb9" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2025.png"><img style="width:288px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2025.png"/></a></figure><hr id="0b7a2f94-46fa-4e32-8d0c-4dff0a0e22b4"/><h3 id="a701f11a-a0d6-422f-9f26-e8a0ff9ca355" class=""><mark class="highlight-blue"><strong>Vertebrobasilar Stroke: </strong></mark></h3><div id="23467026-4236-44ff-9502-1f42d6f02fe6" class="column-list"><div id="eebbbe55-1f7a-4a78-8dd0-d8d2fc78b514" style="width:68.75%" class="column"><ul id="cf6b7bbb-9cd1-4914-bc5b-9a9ff1e60e9e" class="bulleted-list"><li style="list-style-type:disc">unilateral or bilateral cranial nerve deficits (eg, nystagmus, vertigo, dysphagia, dysarthria, diplopia, blindness)</li></ul><ul id="cf0cbe97-b47e-4a70-82d1-973fc260647d" class="bulleted-list"><li style="list-style-type:disc">truncal or limb ataxia</li></ul><ul id="1f1a1536-86a6-4aba-b5fd-04c5b254a5ad" class="bulleted-list"><li style="list-style-type:disc">spastic paresis, crossed sensory and motor deficits*,</li></ul><ul id="7c8990aa-e0b3-4156-80c2-2a088cc49254" class="bulleted-list"><li style="list-style-type:disc">impaired consciousness</li></ul><ul id="f1373dd3-24bd-4da1-a581-1be4ac4e53e2" class="bulleted-list"><li style="list-style-type:disc">coma</li></ul><ul id="4c8caaa7-a614-4c26-9019-2878360918c0" class="bulleted-list"><li style="list-style-type:disc">death (if basilar artery occlusion is complete)</li></ul><ul id="1c1493ec-6903-442c-9a01-df955024e756" class="bulleted-list"><li style="list-style-type:disc">tachycardia</li></ul><ul id="a3255e0d-a2ee-4457-9d03-efa193bacf36" class="bulleted-list"><li style="list-style-type:disc">labile blood pressure</li></ul><p id="ba2d1ccb-3a8a-4ac0-8633-473c6a715a67" class="">*** Ipsilateral facial sensory loss or motor weakness with contralateral body hemianesthesia or hemiparesis indicates a lesion at the pons or medulla.</p></div><div id="53c4e2c8-4eca-444f-9f1e-7ba8dbdd2ec6" style="width:31.250000000000007%" class="column"><figure id="0ef70af3-b34c-4193-8543-cc7b08e98e24" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2026.png"><img style="width:576px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2026.png"/></a></figure></div></div><hr id="87a40f3f-403e-4db7-bfa3-98b38ce84668"/><h3 id="d2840fb9-0d10-4bb2-89cf-a1192b76db89" class=""><mark class="highlight-blue"><strong>Brainstem stroke syndromes: </strong></mark></h3><ul id="3c982037-d24b-4ad4-80ed-54a222a045ba" class="bulleted-list"><li style="list-style-type:disc">Brain stem is divided into 3 sections- mid brain , pons and medulla</li></ul><ul id="542e21f5-0057-4849-89ef-42e7bdad55ef" class="bulleted-list"><li style="list-style-type:disc">Each section is divided into medial and lateral</li></ul><ul id="d5105174-fec4-43fd-aa88-1778ef49aee2" class="bulleted-list"><li style="list-style-type:disc">In general if the lesion is on the medial side corticospinal tracts and medial lemniscus are involved and if there is a lateral lesion spinothalamic tracts sympathetic fibers are involved</li></ul><ul id="16c1286b-efa1-401a-b437-42a929dcf6e3" class="bulleted-list"><li style="list-style-type:disc">Motor cranial nerves nuclei are to the medial side , mixed cranial nerve nuclei to the lateral side.</li></ul><ul id="9dea29d6-a75f-4aa6-8008-5a54575772e7" class="bulleted-list"><li style="list-style-type:disc">All cranial nerve nuclei are present in the brainstem except CN I and II.</li></ul><p id="3871c571-520e-43c9-9932-ca0eb1fe12fb" class="">
+</p><p id="33335ffb-4c14-4475-9a54-8ce9832b280d" class=""><strong><span style="border-bottom:0.05em solid">There are many brainstem stroke syndromes, Some of the clinical features seen are:</span></strong></p><ul id="4c308958-96f4-4bfe-b81e-e841eda7db42" class="bulleted-list"><li style="list-style-type:disc">Crossed sensory findings (e.g. ipsilateral face and contralateral body numbness)</li></ul><ul id="f034194a-b18a-4079-b141-5a00e47f83dc" class="bulleted-list"><li style="list-style-type:disc">Crossed motor findings (ipsilateral face, contralateral body)</li></ul><ul id="9933f310-5c73-412e-8c0d-0754d7c79a16" class="bulleted-list"><li style="list-style-type:disc">Gaze-evoked nystagmus</li></ul><ul id="93140e8b-7fa5-4090-80f8-b0849ee4db89" class="bulleted-list"><li style="list-style-type:disc">Ataxia and vertigo, limb dysmetria</li></ul><ul id="8eb32d82-d1ba-4fd8-abdc-0155978a193a" class="bulleted-list"><li style="list-style-type:disc">Diplopia and eye movement abnormalities</li></ul><ul id="1ca67b77-e7b3-42c4-a2a2-ce236aa316f8" class="bulleted-list"><li style="list-style-type:disc">Dysarthria, dysphagia</li></ul><ul id="aa9763de-3dc4-41dd-bb98-e27fbbc2ff92" class="bulleted-list"><li style="list-style-type:disc">Tongue deviation</li></ul><ul id="f1ae0bfb-98a4-43fe-b842-3ccb73b5ae3f" class="bulleted-list"><li style="list-style-type:disc">Deafness (very rare)</li></ul><ul id="1150bbea-cc28-4813-93c6-c801113623c7" class="bulleted-list"><li style="list-style-type:disc">Locked-in syndrome (can’t move any limb, can’t speak, can sometimes blink)</li></ul><p id="1b2c727d-b5a8-48c2-8170-8a4c37d19328" class="">
+</p><p id="9aab95cf-a71e-4ee0-8d85-45d455c9d224" class=""><span style="border-bottom:0.05em solid"><strong>Midbrain stroke:</strong></span></p><div id="589be8a9-f634-4b75-ab8e-d921e6cee14a" class="column-list"><div id="7db95ae6-9bdf-4b78-884d-c11d49439f50" style="width:68.75%" class="column"><ul id="444e8b46-5fd3-45e2-ba3f-1bc8b5dfea8e" class="bulleted-list"><li style="list-style-type:disc">Ipsilateral 3rd nerve palsy</li></ul><ul id="cf51d763-3014-4148-b991-90b125be8fe3" class="bulleted-list"><li style="list-style-type:disc">Contralateral hemiparesis of the arm and leg, sometimes with hemiplegia of the face</li></ul><ul id="565bb089-f87a-4c14-8baf-b850a7c00393" class="bulleted-list"><li style="list-style-type:disc">Contralateral hemiataxia</li></ul><p id="6fcd35c5-de96-4c99-8942-5086b2ad00fc" class="">
+</p><p id="8decfb69-8a90-4e31-ac0d-339680348e9b" class=""><span style="border-bottom:0.05em solid"><strong>Pontine stroke: </strong></span></p><p id="aa2f6243-d837-48c5-894d-2841fba77e0f" class="">Ipsilateral signs:<div class="indented"><ul id="f560d7ab-ba3f-42bc-b197-dbef3225cb59" class="bulleted-list"><li style="list-style-type:disc">Horner’s syndrome</li></ul><ul id="85e7837b-c618-4f60-bbf4-94c4b0d2c0e3" class="bulleted-list"><li style="list-style-type:disc">6th or 7th nerve palsy (diplopia, whole side of face is weak)</li></ul><ul id="37ba6fd0-e62f-456d-a8aa-5fa9e07aa91f" class="bulleted-list"><li style="list-style-type:disc">Hearing loss (rare)</li></ul><ul id="4dbea3d2-85b9-441f-90dd-b586e152960e" class="bulleted-list"><li style="list-style-type:disc">Loss of pain and temperature sense</li></ul></div></p><p id="0d659680-8228-48c1-add6-a814c46457d6" class="">
+</p><p id="52d5c2fe-8686-4a00-b85c-88623f254494" class="">Contralateral signs:<div class="indented"><ul id="e1292415-571b-4a61-80d8-ad9ee595505e" class="bulleted-list"><li style="list-style-type:disc">Weakness in leg and arm</li></ul><ul id="96cece33-f7ed-49d5-b742-cefcf8280696" class="bulleted-list"><li style="list-style-type:disc">Loss of sensation in arm and leg</li></ul></div></p><ul id="f4ac4fd4-74d2-4a4e-857b-08cc085df920" class="bulleted-list"><li style="list-style-type:disc">Nystagmus, nausea</li></ul><p id="64d7b325-4e78-47de-be90-c2bd36c04451" class="">
+</p><p id="af916c12-1d48-4d19-b862-bcc4ada89dd7" class=""><span style="border-bottom:0.05em solid"><strong>Medullary stroke:</strong></span></p><p id="38845d03-f418-473e-aad4-96c8270b5cef" class="">Ipsilateral signs:<div class="indented"><ul id="cf5db9c3-a145-448f-8dd3-5972cd2702c8" class="bulleted-list"><li style="list-style-type:disc">Tongue weakness</li></ul><ul id="5a48d4f6-3e81-418b-9ac6-feb224142ba9" class="bulleted-list"><li style="list-style-type:disc">Sensory loss in face</li></ul><ul id="130107c9-c87d-498b-8ea4-c9f137db0bae" class="bulleted-list"><li style="list-style-type:disc">Horner’s syndrome</li></ul><ul id="436f33ff-316e-4a3b-8b1a-a7cfc9f3c3c3" class="bulleted-list"><li style="list-style-type:disc">Ataxia</li></ul><ul id="7b21aa9c-801e-431a-b4ff-0e7cc274df5f" class="bulleted-list"><li style="list-style-type:disc">Palate weakness (dysphagia)</li></ul></div></p><p id="6a94a498-0726-4e7f-b10a-07c077f49448" class="">Contralateral signs:<div class="indented"><ul id="ef3b4be2-3d56-4aa7-ab1b-be5d5cc65392" class="bulleted-list"><li style="list-style-type:disc">Weakness, sensory loss in arm and leg</li></ul></div></p><ul id="b60c95a6-f455-4bc9-85a0-a026fe038f2a" class="bulleted-list"><li style="list-style-type:disc">Nausea, nystagmus, dysphagia, dysarthria</li></ul><p id="d424f13a-f7b3-4508-83ec-652e268ae41d" class="">
+</p><p id="664bb0a6-275f-4445-9792-e9a9b27309cf" class=""><span style="border-bottom:0.05em solid"><strong>Cerebellar infarction: </strong></span></p><ul id="aa4f9845-9083-4798-a1d0-db17b6a34cd7" class="bulleted-list"><li style="list-style-type:disc">Infarction causes edema resulting in mass effect, herniation and compression of the fourth ventricle.</li></ul><ul id="bd293a39-33b7-4e1f-9d99-1a793f791326" class="bulleted-list"><li style="list-style-type:disc">This can lead to rapid deterioration in level of consciousness.</li></ul><ul id="18bc35b5-323a-4ecc-838c-7cc5a32de245" class="bulleted-list"><li style="list-style-type:disc">Surgical decompression is often necessary in these circumstances.</li></ul><p id="41e87a75-fc6f-4f83-8139-9b9b5a057faf" class="">
+</p><p id="caf01462-9a29-48cb-b6ff-1db6c7cd7b05" class="">
+</p><p id="40d81b1c-3e70-4edc-810d-0ac15b85c64b" class="">
+</p><p id="0b76a176-a874-4dad-a58d-894c46271fc5" class="">
+</p><p id="4feda64d-e1a8-4cf7-aab5-cba23d9b5726" class="">
+</p><p id="ce130f34-a321-4fc0-878b-bba9946a159a" class="">
+</p><p id="dc7ebd8b-62b0-4f19-9633-8b798d5f0cef" class="">
+</p><p id="55ea3483-18e5-4fde-ab63-dfbfe49470de" class="">
+</p><p id="0ec97a2d-6d6e-452c-aaea-569a7f1a3824" class="">
+</p><p id="430e2eb6-e717-494b-bd98-f8740f8de8ed" class="">
+</p><p id="64a58e78-76d7-412f-b447-2c2dc58cb2e9" class="">
+</p><p id="177cc2ea-0e25-4de1-8ef6-a26b6fbb335c" class="">
+</p><p id="437cc787-8aaa-49d6-a1eb-e3b6241808e8" class="">
+</p><p id="6ba6a364-7071-479c-be2a-1d23e46dbf09" class="">
+</p><p id="a801fdf8-f5a7-4e3a-be81-7fde6b2d7b5b" class="">
+</p><p id="dc4b19f8-1610-4a3a-8f91-331cd80fa2a9" class="">
+</p><p id="21fd93ef-2668-4067-a326-628e9496e8ad" class="">
+</p><p id="af34b59d-620a-4252-9cb3-7fdd0d0749d6" class="">
+</p><p id="10b6d3bc-cc73-412e-8551-d3081b791669" class="">
+</p><p id="99f5d15d-6a9f-441b-b7c0-2d50318aca3d" class="">
+</p></div><div id="1c5d8a6f-a8f5-4a90-97d3-f79166564b94" style="width:31.25%" class="column"><figure id="d37cc423-79fd-4793-8112-657bb3923ebe" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2027.png"><img style="width:336px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2027.png"/></a><figcaption><span style="border-bottom:0.05em solid"><strong>Midbrain stroke.</strong></span></figcaption></figure><figure id="fd62bbcc-453b-4231-a27f-b8f11054010a" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2028.png"><img style="width:336px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2028.png"/></a><figcaption><span style="border-bottom:0.05em solid"><strong>Pontine stroke.</strong></span></figcaption></figure><figure id="0b4fad76-9130-4e57-ae05-71a890a11ef6" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2029.png"><img style="width:336px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2029.png"/></a><figcaption><span style="border-bottom:0.05em solid"><strong>Medullary stroke.</strong></span></figcaption></figure><figure id="3dafd237-eee4-46e7-87ef-5b40083f8e52" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2030.png"><img style="width:336px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2030.png"/></a><figcaption><span style="border-bottom:0.05em solid"><strong>Cerebellar infarction.</strong></span></figcaption></figure></div></div><hr id="42d79a20-cd8f-43c0-a620-d33c5c004163"/><h3 id="f74a0d51-5441-4d13-8a93-dd99738e7a74" class=""><mark class="highlight-blue"><strong>MEDIAL MEDULLARY SYNDROME (Déjérine syndrome): </strong></mark></h3><div id="02aa174a-12ef-462f-9029-3c764a5c28db" class="column-list"><div id="00ed7e7e-934f-4efe-858c-614a253a89f7" style="width:81.25%" class="column"><ul id="a2f382fc-84db-4854-9104-ad6f0bdc6b83" class="bulleted-list"><li style="list-style-type:disc">CAUSE – occlusion of paramedian branches of anterior spinal artery and/or vertebral arteries, ipsilateral vertebral artery dissection.</li></ul><ul id="b6afd20d-b51a-4659-b97c-81bf31ea37f2" class="bulleted-list"><li style="list-style-type:disc">Incidence- less than 1% of all ischemic strokes.</li></ul><ul id="0ee1cf44-a22a-49b5-ab28-ce8905681b5b" class="bulleted-list"><li style="list-style-type:disc">Lesion involves corticospinal tracts , medial lemniscus ,hypoglossal nerves in caudal medulla are damaged inferior olivary nucleus, nucleus ambiguus.</li></ul><ul id="2fa3903c-c509-4637-b033-d5fd1dac950b" class="bulleted-list"><li style="list-style-type:disc">Signs and symptoms: contralateral hemiparesis , decreased proprioception fine touch vibration on the contralateral side , tongue deviation to the same side of lesion ,dysarthria.<ul id="d6934a51-043e-4891-85c0-42541a99bd2e" class="bulleted-list"><li style="list-style-type:circle">Dysphagia can be seen in bilateral medial medullary infract.</li></ul></li></ul><p id="e1267065-7c7a-47e0-b7de-1d5116384ae5" class="">
+</p><ul id="7d15e6bc-8e13-4ff4-952e-5691671054aa" class="bulleted-list"><li style="list-style-type:disc">Internuclear ophthalmoplegia: when an attempt is made to look to the right, the left eye will adduct to a minimal extent whereas the right eye will abduct with nystagmus.</li></ul><ul id="3c10e743-e97e-47bc-9ab8-712480094b79" class="bulleted-list"><li style="list-style-type:disc">Deviation of tongue towards side of lesion. With respect to left medial medullary syndrome, infarction of the hypoglossal nucleus will cause the tongue to deviate to the left.</li></ul><ul id="e05f5c83-641a-4065-af95-af62302f5dda" class="bulleted-list"><li style="list-style-type:disc">The red lines represent weakness of the contralateral arm and leg (corticospinal tract). The blue lines indicate loss of vibration and proprioception of the contralateral arm and leg (medial lemniscus). </li></ul><ul id="3fb4e8cc-39e3-40ed-96b1-993bcebb00f7" class="bulleted-list"><li style="list-style-type:disc">The red circle around the eye represents internuclear ophthalmoplegia of the ipsilateral eye (medial longitudinal fasciculus). <ul id="b427901b-6d44-4ca3-9e1b-c237f979ce26" class="bulleted-list"><li style="list-style-type:circle">The red circle around the mouth indicates deviation of the tongue towards the side of the lesion (hypoglossal nerve)</li></ul></li></ul><p id="6d61f319-14fc-42e4-b1f9-2b1fd1e55950" class="">
+</p><p id="86a38f39-df8f-4d3d-b9c5-6ec9f2bd6b88" class=""><span style="border-bottom:0.05em solid"><strong>Bilateral medial medullary stroke:</strong></span>
+Weakness, dysarthria, hypoglossal palsy, flaccid, or spastic quadriplegia.</p><p id="037a86f0-147d-467d-81af-a880bb4eee28" class="">
+</p><p id="dcffab4b-4840-4ea9-bb39-c9328e9d9ef8" class="">
+</p><figure id="1656c407-eac6-4d2c-bddd-0a26fe8fa1ea" class="image" style="text-align:center"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2031.png"><img style="width:559px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2031.png"/></a></figure></div><div id="6dc81cbe-2989-40bf-affc-23dbb099d2df" style="width:18.749999999999996%" class="column"><figure id="f94684d8-f314-4413-ac4c-77856832044c" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2032.png"><img style="width:384px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2032.png"/></a></figure><figure id="b4b03f0f-99d8-46ab-ba91-3160065ce683" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2033.png"><img style="width:583px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2033.png"/></a></figure><figure id="b461e6ab-a09f-4325-884b-7e4ba40dfbfe" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2034.png"><img style="width:460px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2034.png"/></a><figcaption><span style="border-bottom:0.05em solid"><strong>Bilateral medial medullary stroke.</strong></span>
+</figcaption></figure></div></div><p id="9978ee76-fd08-42a2-b5ed-a4497fbbd54b" class="">
+</p><hr id="56c236df-256e-40cf-b369-337c3ba5e39c"/><h3 id="f0192435-7a37-4956-9cf7-9b1c7ba2d152" class=""><mark class="highlight-blue"><strong>LATERAL MEDULLARY SYNDROME (Wallenberg syndrome):</strong></mark></h3><ul id="f33c57b2-5b56-4708-9f24-8c3216ba4dd4" class="bulleted-list"><li style="list-style-type:disc">CAUSE- mostly due to vertebral artery occlusion , second most common cause is due to posterior inferior cerebellar artery occlusion, vertebral artery dissection is a common cause in younger patients</li></ul><ul id="e7c56eea-789e-4140-bbc7-f1f1653a7171" class="bulleted-list"><li style="list-style-type:disc">Incidence – most common posterior circulation ischemic stroke</li></ul><ul id="c5363a9a-1f7d-42c2-bc6a-55b501f4badc" class="bulleted-list"><li style="list-style-type:disc">Lesion involves inferior cerebellar peduncle , spinothalamic tracts, nucleus of CN V, fibers of CN IX, X, vestibular nuclei , descending sympathetic fibers , nucleus ambiguous and nucleus tractus solitarius.</li></ul><ul id="6dcf6398-c410-4fff-814f-3d1c64416741" class="bulleted-list"><li style="list-style-type:disc">Signs and symptoms:  <ul id="50afc581-6f4c-4581-80bb-d0e82df299fd" class="bulleted-list"><li style="list-style-type:circle">patients present with ipsilateral vertigo with nystagmus ( inferior vestibular nuclei)</li></ul><ul id="519c37b0-0e26-414d-bd33-acf77ad5162e" class="bulleted-list"><li style="list-style-type:circle">Hiccups</li></ul><ul id="ad9544e3-450c-45fc-8bf1-2439be2954a6" class="bulleted-list"><li style="list-style-type:circle">Dysphonia , dysarthria and dysphagia</li></ul><ul id="8947608d-c485-4178-ba50-e790a37e02d4" class="bulleted-list"><li style="list-style-type:circle">Horner syndrome</li></ul><ul id="cc0af136-b665-4934-9282-26fe03b0a250" class="bulleted-list"><li style="list-style-type:circle">Ipsilateral ataxia with tendency to fall on the effected size</li></ul><ul id="123772b8-a115-4c86-a6ed-961c89266185" class="bulleted-list"><li style="list-style-type:circle">Ipsilateral sensory loss on the face (pain and temperature)</li></ul><ul id="f85313ec-ea8d-4501-9f28-03f36d822bbb" class="bulleted-list"><li style="list-style-type:circle">ipsilateral Trismus</li></ul></li></ul><p id="73b4f8d6-ae60-42d1-a5d9-8889cb97ce8b" class="">
+</p><figure id="958fca36-4b7a-4dfe-be5c-3f0e39ce0e54" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2035.png"><img style="width:576px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2035.png"/></a></figure><figure id="34a76e8c-1672-4390-851c-d4df20d71a68" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2036.png"><img style="width:1266px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2036.png"/></a></figure><p id="ec010884-b883-4fe0-9a25-3b36012e900c" class="">
+</p><div id="db92a253-5bf1-42eb-8728-683ee854011a" class="column-list"><div id="fb258492-da7e-46b8-b5ac-49b0418ebde4" style="width:50%" class="column"><p id="4a746fe2-4080-446d-b573-98c852e43911" class=""><strong>Horner&#x27;s syndrome:</strong> The left eye exhibits ptosis (drooping of the upper eyelid), anhidrosis (lack of sweat in response to heat), and miosis (constriction of the pupil).</p><p id="b1895297-0aec-49f8-aa6e-e204c9d69553" class="">
+</p><ul id="49a04e30-4047-4ffc-9699-f9edb05de6db" class="bulleted-list"><li style="list-style-type:disc">The green lines indicate loss of pain and temperature of the contralateral arm and leg (spinothalamic tract). </li></ul><ul id="d3ad8af6-1305-4399-a2e5-aa4d347cb736" class="bulleted-list"><li style="list-style-type:disc">The yellow lines represent ataxia of the ipsilateral arm and leg (spinocerebellar tract). </li></ul><ul id="7dd78985-ccdc-4e68-b67f-da2b145b3a0f" class="bulleted-list"><li style="list-style-type:disc">The purple lines on the left face indicate loss of pain and temperature of the ipsilateral face (sensory nucleus of trigeminal nerve). </li></ul><ul id="0afae2f4-7ed5-4ae3-a754-e99e47f51972" class="bulleted-list"><li style="list-style-type:disc">The red circle represents Horner&#x27;s syndrome of the ipsilateral eye (sympathetic pathway). Furthermore, patients may experience vertigo and nystagmus (vestibular nucleus), loss of the gag reflex (vagus nerve), and dysphagia (nucleus ambiguus and glossopharyngeal nerves).
+</li></ul><p id="1e64a883-ce38-492f-b05f-6899453c5fc4" class="">
+</p><p id="9fbd1d1c-f9de-4720-9b68-9b6fff758d5b" class="">
+</p><p id="cb89913f-fb0f-45a3-846e-1ce890296af0" class="">
+</p><p id="758f1083-ac7b-486c-8e47-abd4b6a00753" class="">
+</p><p id="902a9558-539e-4ce0-b0af-367c43011cab" class="">
+</p></div><div id="af551f6a-84db-4262-ae59-d34759f31091" style="width:50%" class="column"><figure id="8d057bd7-39eb-4be3-8885-8b4c57c1ce0c" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2037.png"><img style="width:601px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2037.png"/></a></figure></div></div><hr id="da80145d-19a3-4d91-9e69-973d77c14e00"/><div id="b780482d-6efc-4514-8f16-e417afd316ea" class="column-list"><div id="7df10efb-ff96-4aab-94a9-60a1bb000c5a" style="width:75%" class="column"><h3 id="ecb23539-7dde-4591-83b7-0b260e8a6e91" class=""><mark class="highlight-blue"><strong>LOCKED IN SYNDROME (pseudocoma, bilateral ventral pons syndrome): </strong></mark></h3><ul id="2b832dad-01dd-426e-9c8f-f650040d1ec2" class="bulleted-list"><li style="list-style-type:disc">CAUSE :hemorrhage or occlusion of the basilar artery , trauma , tumors, infection and demyelination( metabolic demyelination ), heroin abuse</li></ul><ul id="7b73cbca-1fa8-41b0-b69c-67fcb00587bd" class="bulleted-list"><li style="list-style-type:disc">Lesion involves the structures present on ventral pons.</li></ul><ul id="5a6a615e-0079-49ee-9eda-ee1d83bafcda" class="bulleted-list"><li style="list-style-type:disc">SIGNS AND SYMPTOMS:<ul id="cdf74391-9682-422c-a3eb-eaa592f930f0" class="bulleted-list"><li style="list-style-type:circle">patients present with quadriplegia , difficulty in voluntary respiration, apnea</li></ul><ul id="a166b3ea-6d96-48c9-89b5-a05d54f5e209" class="bulleted-list"><li style="list-style-type:circle">Dizziness and vertigo</li></ul><ul id="410944ad-f64a-4372-b4ae-479db5137ed9" class="bulleted-list"><li style="list-style-type:circle">Anarthria , dysphagia</li></ul><ul id="de938b6e-55ea-43cc-bc90-821c50c8a3f4" class="bulleted-list"><li style="list-style-type:circle">Loss of voluntary facial mouth and tongue movements</li></ul><ul id="3646b0bf-1cc8-41b2-91bd-d7db8588146f" class="bulleted-list"><li style="list-style-type:circle">If reticular activating system is spared – consciousness is preserved</li></ul><ul id="4247bdcb-a351-4c0b-83a8-ee2af41b1237" class="bulleted-list"><li style="list-style-type:circle">Vertical eye movement and blinking ability is preserved</li></ul></li></ul></div><div id="d1310c23-1e2b-434a-9fb1-ff8054231913" style="width:25%" class="column"><figure id="f2f43bd6-b486-4440-9027-2c27bd135182" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2038.png"><img style="width:418px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2038.png"/></a></figure></div></div><p id="8a4702ef-1ce7-452f-8931-7b369efd9216" class="">
+</p><hr id="cd249d29-4b5e-41a6-ac31-81c9a311ed0d"/><div id="564f56f1-865c-4c70-bab5-08a2a42925e3" class="column-list"><div id="d941d5f9-c2fc-4019-b7ee-ddfe1931e648" style="width:75%" class="column"><h3 id="3ed04d38-1248-434d-b53e-f7583522f4eb" class=""><mark class="highlight-blue"><strong>VENTRAL PONTINE SYNDROME-Millard-Gubler syndrome: </strong></mark></h3><ul id="3c65ec5c-b259-4814-bcb7-3bc3dcccea1d" class="bulleted-list"><li style="list-style-type:disc">CAUSE- vascular( hemorrhage or occlusion of paramedian penetrating branches of basilar artery) and tumors (children).</li></ul><ul id="e37dda1c-6457-4af6-a7f2-6630086e7c8c" class="bulleted-list"><li style="list-style-type:disc">The lesion involves CN VI fasciculus and CN VII along with corticospinal tracts.</li></ul><ul id="1513854a-6ccd-47a6-8060-5d57cbf0365a" class="bulleted-list"><li style="list-style-type:disc">SIGNS AND SYMPTOMS – patients present with contralateral hemiplegia and ipsilateral lateral rectus weakness with diplopia.</li></ul><ul id="f85e7467-92e8-44bd-82cf-6f446e8fe80b" class="bulleted-list"><li style="list-style-type:disc">Cranial nerve VII involvement leads to ipsilateral flaccid paralysis of the muscles of facial expression with loss of corneal reflex (LMN type).</li></ul><p id="042de0c8-4114-444b-a861-837a0c968984" class="">
+</p><p id="06933de0-01b1-417c-af14-7ab81c82dec2" class="">
+</p><p id="62c41251-e02f-4a77-806b-0faf75eafc8d" class="">
+</p><p id="c52457ff-64bf-4603-ab5e-d380b6c502e2" class="">
+</p></div><div id="b5a19bb3-1d8f-470d-85eb-36dc48bdcdb5" style="width:25.000000000000007%" class="column"><figure id="dd390873-018e-431d-b727-6d2d49dc00a2" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2039.png"><img style="width:406px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2039.png"/></a></figure></div></div><hr id="6e901263-a17c-483e-8e07-1b38068a88c1"/><div id="148438f8-a6ba-4288-a769-cae81ebd6001" class="column-list"><div id="b377ab4d-b391-4481-808d-b189639bc699" style="width:75%" class="column"><h3 id="187131a6-0ce2-42fb-85e7-823f925b94cb" class=""><mark class="highlight-blue"><strong>VENTRAL MEDIAL MID - PONS ISCHEMIA - Raymond-Cestan syndrome: </strong></mark></h3><p id="ea193985-59df-4996-a243-fb116731d515" class="">CAUSE –occlusion of paramedian pontine branches of basilar artery.</p><p id="43736d82-0b0f-4b36-be9a-fd8e87ceed7e" class=""><span style="border-bottom:0.05em solid">There are two types of presentations for Raymond-ceston syndrome: </span></p><p id="8d2021f5-e747-42c0-928c-cf4bc0253420" class="">1) classical type – involves the CN VI , corticofacial and corticospinal fibers , patients presents with ipsilateral lateral rectus weakness , contralateral facial palsy in the lower face(central facial palsy/UMN type) and contralateral hemiplegia.</p><p id="b37bfee7-e173-453c-94ca-2883a5b2be10" class="">2) common type – involves CN VI and corticospinal fibers sparing the corticofacial fibers.</p><p id="4e7b00d7-4faf-40e0-80f9-54c70a403f3f" class="">
+</p><p id="6bdea31f-f3cf-43ab-81c4-8ff8a8bf7699" class="">
+</p><p id="9e6695f3-263c-4f9b-8f96-bba7b8f51e88" class="">
+</p><p id="751ab2a3-c277-47a9-aeef-7dda3c766f6f" class="">
+</p><p id="d2211cca-8be0-41ed-bd5a-1f301082cd78" class="">
+</p><p id="72ea8a13-0447-45b2-9281-bd157f3ad370" class="">
+</p><p id="fc8da060-acc8-4fcb-9fc3-18d52054df13" class="">
+</p></div><div id="813ec1d8-3bac-4980-b7dd-1c6df9c705aa" style="width:25%" class="column"><figure id="f63b36d7-91f7-4451-9243-9a10d6b9971f" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2040.png"><img style="width:421px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2040.png"/></a></figure></div></div><hr id="53401eb5-20ca-416f-a90a-cb0e06e0f9af"/><div id="bfd13427-cce9-4234-8b34-90e48e38c7ba" class="column-list"><div id="a8d82e2a-26cf-4759-bf8c-ee3340d5567f" style="width:75%" class="column"><h3 id="c9acd1c8-7e05-4c86-86e6-7811092b67ce" class=""><mark class="highlight-blue"><strong>LATERAL PONTINE SYNDROME- Marie Foix Alajouanine syndrome: </strong></mark></h3><p id="b0786c20-959e-495e-8e09-439b8b7de06f" class="">CAUSE- occlusion of anterior inferior cerebellar artery.</p><p id="d1eb9b81-35d2-4ff3-b0fb-65aff2167fed" class="">Nucleus of cranial nerve V, VII,VIII(vestibular nuclei) , spinothalamic tracts, sympathetic fibers , middle and inferior cerebellar peduncles are involved in the lesion</p><p id="c9be1037-57fb-4bb5-ad05-40195624c34a" class="">Patient presents with ipsilateral facial palsy , decreased lacrimation, decreased salivation , decreased taste in the anterior 2/3rd of tongue , vomiting ,vertigo, nystagmus , decreased pain and temperatue on ipsilateral side</p><p id="9bb23689-61d8-4ca2-9350-be3ceaf02282" class="">Sensorineural deafness if labyrinth artery arises from AICA</p><p id="9bbc8767-d3f3-43b3-924a-5807b5944dd1" class="">Decreased pain and temperature on the contralateral side</p><p id="53205f59-750a-4fdb-877b-0cc68874599e" class="">Ipsilateral Horner’s syndrome</p><p id="b53cb224-edb9-4113-96d8-3a1a406e93ce" class="">Ipsilateral ataxia and dysmetria</p></div><div id="be33fadb-4f25-428a-be40-3e9887ab12cb" style="width:25%" class="column"><figure id="fa1b1f94-11c4-4b76-b228-93af681969eb" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2041.png"><img style="width:311px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2041.png"/></a></figure></div></div><p id="5a729216-c562-479e-885d-747212900e57" class="">
+</p><hr id="4ac6087b-2c54-4637-833f-d9bf4c03c51d"/><h3 id="43b32e90-04c5-4535-92ea-3c93924b4c21" class=""><mark class="highlight-blue"><strong>MIDBRAIN SYNDROMES: </strong></mark></h3><figure id="b5e62b7e-6c4b-43eb-bc14-9a1cb25ae583" class="image"><a href="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2042.png"><img style="width:815px" src="Stroke%200d0db84e72194482806b0b6bcb27f8e3/Untitled%2042.png"/></a></figure><p id="4658b518-d512-4d5c-ba32-4b3227ddf7d2" class="">
+</p></div></article></body></html>
